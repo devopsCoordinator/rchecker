@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @representative.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @representative.email %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @representative.mobile %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @representative.area_id %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @representative.memo %>
+</p>
+
+<%= link_to 'Edit', edit_representative_path(@representative) %> |
+<%= link_to 'Back', representatives_path %>

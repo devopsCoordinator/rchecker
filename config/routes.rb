@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :devices
+
+  resources :areas
+
+  resources :representatives
+
+  resources :companies
+
+  # API対応
+  mount API::Root => '/'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

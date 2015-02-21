@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'enumerize'
 gem 'inherited_resources'
 gem 'has_scope'
+gem 'therubyracer', platforms: :ruby
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -32,6 +33,7 @@ gem 'cancancan'
 # Boostrap関連
 gem 'twitter-bootswatch-rails', '~> 3.1.1'
 gem 'twitter-bootswatch-rails-helpers'
+gem 'less-rails'
 
 # サーバー系
 gem 'unicorn'
