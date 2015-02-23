@@ -6,8 +6,7 @@ RSpec.describe "representatives/edit", type: :view do
       :name => "MyString",
       :email => "MyString",
       :mobile => "MyString",
-      :area_id => 1,
-      :memo => "MyText"
+      :area_id => 1
     ))
   end
 
@@ -23,8 +22,6 @@ RSpec.describe "representatives/edit", type: :view do
       assert_select "input#representative_mobile[name=?]", "representative[mobile]"
 
       assert_select "input#representative_area_id[name=?]", "representative[area_id]"
-
-      assert_select "textarea#representative_memo[name=?]", "representative[memo]"
     end
   end
 end

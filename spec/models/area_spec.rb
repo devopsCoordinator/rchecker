@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: areas
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  memo       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Area, type: :model do

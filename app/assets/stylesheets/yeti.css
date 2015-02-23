@@ -1,0 +1,8 @@
+/* Yeti
+ * Bootswatch
+ *= require_self
+ *= require yeti/loader
+ *= require yeti/bootswatch
+*/body {
+  padding-top: 60px;
+}

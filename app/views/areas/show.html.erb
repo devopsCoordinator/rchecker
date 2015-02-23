@@ -1,14 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @area.name %>
-</p>
+  <div class="page-header">
+        <h1>地域</h1>
+  </div>
+  
+ <h2>照会</h2>
 
-<p>
-  <strong>Memo:</strong>
-  <%= @area.memo %>
-</p>
+<table class="table table-bordered table-hover ">
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>内容</th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_area_path(@area) %> |
-<%= link_to 'Back', areas_path %>
+  <tbody>
+  	<tr>
+  		<td>地域名</td>
+  		<td><%= @area.name %></td>
+  	</tr>
+  	  	<tr>
+  		<td>備考</td>
+    		<td><%= @area.memo %></td>
+    	</tr>
+  	</tr>
+  </tbody>
+</table>
+
+<%= link_to '編集', edit_area_path(@area)  ,{:class => "btn btn-primary btn"} %>
+<%= link_to t('.cancel', :default => t("戻る")), area_path, :class => 'btn btn-default btn' %>

@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :companies
 
+  get 'welcome/index'
+
+  root 'welcome#index'
+
   # API対応
   mount API::Root => '/'
 

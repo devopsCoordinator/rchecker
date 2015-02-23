@@ -1,29 +1,33 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Uuid:</strong>
-  <%= @device.uuid %>
-</p>
+  <div class="page-header">
+        <h1>デバイス</h1>
+  </div>
+  
+ <h2>照会</h2>
 
-<p>
-  <strong>Model:</strong>
-  <%= @device.model %>
-</p>
+<table class="table table-bordered table-hover ">
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>内容</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Department:</strong>
-  <%= @device.department %>
-</p>
+  <tbody>
+  	<tr>
+  		<td>製造コード</td>
+  		<td><%= @device.uuid %></td>
+  	</tr>
+  	  	<tr>
+  		<td>モデル</td>
+  		<td><%= @device.model %></td>
+  	</tr>
+  	  	<tr>
+  		<td>備考</td>
+  		<td><%= @device.memo %></td>
+  	</tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Location:</strong>
-  <%= @device.location %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @device.memo %>
-</p>
-
-<%= link_to 'Edit', edit_device_path(@device) %> |
-<%= link_to 'Back', devices_path %>
+<%= link_to '編集', edit_device_path(@device)  ,{:class => "btn btn-primary btn"} %>
+<%= link_to t('.cancel', :default => t("戻る")), devices_path, :class => 'btn btn-default btn' %>

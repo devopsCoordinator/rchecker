@@ -1,29 +1,37 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @representative.name %>
-</p>
+  <div class="page-header">
+        <h1>担当者</h1>
+  </div>
+  
+ <h2>照会</h2>
 
-<p>
-  <strong>Email:</strong>
-  <%= @representative.email %>
-</p>
+<table class="table table-bordered table-hover ">
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>内容</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Mobile:</strong>
-  <%= @representative.mobile %>
-</p>
+  <tbody>
+  	<tr>
+  		<td>担当者名</td>
+  		<td><%= @representative.name %></td>
+  	</tr>
+  	  	<tr>
+  		<td>メールアドレス</td>
+  		<td><%= @representative.email %></td>
+  	</tr>
+  	  	<tr>
+  		<td>携帯メールアドレス</td>
+  		<td><%= @representative.mobile %></td>
+  	</tr>
+  	  	  	<tr>
+  		<td>地域コード</td>
+  		<td><%= @representative.area_id %></td>
+  	</tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Area:</strong>
-  <%= @representative.area_id %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @representative.memo %>
-</p>
-
-<%= link_to 'Edit', edit_representative_path(@representative) %> |
-<%= link_to 'Back', representatives_path %>
+<%= link_to '編集', edit_representative_path(@representative)  ,{:class => "btn btn-primary btn"} %>
+<%= link_to t('.cancel', :default => t("戻る")), representatives_path, :class => 'btn btn-default btn' %>

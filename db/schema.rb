@@ -11,10 +11,76 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220083952) do
+ActiveRecord::Schema.define(version: 20150223010100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_areas", force: :cascade do |t|
+    t.string   "name"
+    t.text     "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "admin_areas", ["name"], name: "index_admin_areas_on_name", using: :btree
+
+  create_table "admin_companies", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "area_id"
+    t.integer  "representative_id"
+    t.text     "memo"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "admin_companies", ["name"], name: "index_admin_companies_on_name", using: :btree
+
+  create_table "admin_devices", force: :cascade do |t|
+    t.string   "uuid"
+    t.string   "model"
+    t.text     "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "admin_devices", ["model"], name: "index_admin_devices_on_model", using: :btree
+  add_index "admin_devices", ["uuid"], name: "index_admin_devices_on_uuid", using: :btree
+
+  create_table "admin_locations", force: :cascade do |t|
+    t.integer  "comapny_id"
+    t.integer  "device_id"
+    t.string   "department"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "admin_locations", ["comapny_id"], name: "index_admin_locations_on_comapny_id", using: :btree
+  add_index "admin_locations", ["device_id"], name: "index_admin_locations_on_device_id", using: :btree
+
+  create_table "admin_representatives", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "mobile"
+    t.integer  "area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "admin_representatives", ["email"], name: "index_admin_representatives_on_email", using: :btree
+  add_index "admin_representatives", ["mobile"], name: "index_admin_representatives_on_mobile", using: :btree
+  add_index "admin_representatives", ["name"], name: "index_admin_representatives_on_name", using: :btree
+
+  create_table "admin_supplies", force: :cascade do |t|
+    t.string   "uuid"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "admin_supplies", ["uuid"], name: "index_admin_supplies_on_uuid", using: :btree
 
   create_table "areas", force: :cascade do |t|
     t.string   "name"
@@ -39,19 +105,19 @@ ActiveRecord::Schema.define(version: 20150220083952) do
   create_table "devices", force: :cascade do |t|
     t.string   "uuid"
     t.string   "model"
-    t.string   "department"
-    t.string   "location"
     t.text     "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "devices", ["model"], name: "index_devices_on_model", using: :btree
-  add_index "devices", ["uuid"], name: "index_devices_on_uuid", using: :btree
+  add_index "devices", ["uuid"], name: "index_devices_on_uuid", unique: true, using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.integer  "comapny_id"
     t.integer  "device_id"
+    t.string   "department"
+    t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,7 +130,6 @@ ActiveRecord::Schema.define(version: 20150220083952) do
     t.string   "email"
     t.string   "mobile"
     t.integer  "area_id"
-    t.text     "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

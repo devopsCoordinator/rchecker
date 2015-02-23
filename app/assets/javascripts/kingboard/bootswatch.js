@@ -1,3 +1,0 @@
-// Kingboard
-// Bootswatch
-// bootswatch.js

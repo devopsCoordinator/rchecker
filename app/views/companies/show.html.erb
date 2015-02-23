@@ -1,24 +1,32 @@
-<p id="notice"><%= notice %></p>
+  <div class="page-header">
+        <h1>会社</h1>
+  </div>
+  
+ <h2>照会</h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+<table class="table table-bordered table-hover ">
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>内容</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Area:</strong>
-  <%= @company.area_id %>
-</p>
+  <tbody>
+  	<tr>
+  		<td>会社名</td>
+  		<td><%= @company.name %></td>
+  	</tr>
+  	  	<tr>
+  		<td>地域コード</td>
+  		<td><%= @company.area_id %></td>
+  	</tr>
+  	  	<tr>
+  		<td>担当者</td>
+  		<td><%= @company.representative_id %></td>
+  	</tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Representative:</strong>
-  <%= @company.representative_id %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @company.memo %>
-</p>
-
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<%= link_to '編集', edit_company_path(@company)  ,{:class => "btn btn-primary btn"} %>
+<%= link_to t('.cancel', :default => t("戻る")), companies_path, :class => 'btn btn-default btn' %>

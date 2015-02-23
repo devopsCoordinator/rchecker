@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: devices
+#
+#  id         :integer          not null, primary key
+#  uuid       :string
+#  model      :string
+#  memo       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Device, type: :model do

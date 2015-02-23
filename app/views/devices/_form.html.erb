@@ -1,37 +1,25 @@
-<%= form_for(@device) do |f| %>
-  <% if @device.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
-
-      <ul>
-      <% @device.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= simple_form_for @device, :html => { :class => 'form-horizontal' } do |f| %>
+    <fieldset>
+        <div class="form-group">
+          <div class="col-lg-3">
+      <%= f.input :uuid ,label: "製造コード"%>
     </div>
-  <% end %>
+      </div>
+        <div class="form-group">
+          <div class="col-lg-3">
+      <%= f.input :model ,label: "モデル" %>
+    </div>
+    </div>
+      <div class="form-group">
+        <div class="col-lg-3">
+      <%= f.input :memo ,label: "備考"  %>
+    </div>
+    </div>
+      <div class="form-group">
 
-  <div class="field">
-    <%= f.label :uuid %><br>
-    <%= f.text_field :uuid %>
+      <%= f.submit '登録', :class => 'btn btn-primary btn' %>
+      <%= link_to t('.cancel', :default => t("戻る")), devices_path, :class => 'btn btn-default btn' %>
   </div>
-  <div class="field">
-    <%= f.label :model %><br>
-    <%= f.text_field :model %>
-  </div>
-  <div class="field">
-    <%= f.label :department %><br>
-    <%= f.text_field :department %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :memo %><br>
-    <%= f.text_area :memo %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </fieldset>
+  
 <% end %>

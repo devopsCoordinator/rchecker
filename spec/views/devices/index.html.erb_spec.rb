@@ -6,15 +6,11 @@ RSpec.describe "devices/index", type: :view do
       Device.create!(
         :uuid => "Uuid",
         :model => "Model",
-        :department => "Department",
-        :location => "Location",
         :memo => "MyText"
       ),
       Device.create!(
         :uuid => "Uuid",
         :model => "Model",
-        :department => "Department",
-        :location => "Location",
         :memo => "MyText"
       )
     ])
@@ -24,8 +20,6 @@ RSpec.describe "devices/index", type: :view do
     render
     assert_select "tr>td", :text => "Uuid".to_s, :count => 2
     assert_select "tr>td", :text => "Model".to_s, :count => 2
-    assert_select "tr>td", :text => "Department".to_s, :count => 2
-    assert_select "tr>td", :text => "Location".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
   end
 end

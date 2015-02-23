@@ -38,6 +38,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.7)
     anbt-sql-formatter (0.0.3)
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (6.0.0)
     ast (2.0.0)
     astrolabe (1.3.0)
@@ -100,6 +103,11 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    draper (1.4.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -147,6 +155,7 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hash-deep-merge (0.1.1)
     hashie (3.4.0)
     hike (1.2.3)
     hirb (0.7.3)
@@ -173,9 +182,15 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.2)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    lazy_high_charts (1.5.4)
+      bundler (>= 1.0)
+      hash-deep-merge
     less (2.6.0)
       commonjs (~> 0.2.7)
     less-rails (2.6.0)
@@ -204,6 +219,8 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    paranoia (2.1.0)
+      activerecord (~> 4.0)
     parser (2.2.0.3)
       ast (>= 1.1, < 3.0)
     pg (0.18.1)
@@ -260,6 +277,8 @@ GEM
       rails (>= 3.2.0)
     rails-html-sanitizer (1.0.1)
       loofah (~> 2.0)
+    rails_config (0.4.2)
+      activesupport (>= 3.0)
     railties (4.2.0)
       actionpack (= 4.2.0)
       activesupport (= 4.2.0)
@@ -274,6 +293,7 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     ref (1.0.5)
+    request_store (1.1.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rspec-core (3.2.0)
@@ -314,6 +334,9 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.6.0)
     spring (1.3.2)
     spring-commands-rspec (1.0.4)
@@ -370,6 +393,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   awesome_print
   better_errors
   binding_of_caller
@@ -380,6 +404,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
+  draper
   enumerize
   factory_girl_rails
   faker
@@ -393,8 +418,11 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  kaminari
   launchy
+  lazy_high_charts
   less-rails
+  paranoia
   pg
   pry-byebug
   pry-doc
@@ -404,11 +432,13 @@ DEPENDENCIES
   rails (= 4.2.0)
   rails-erd
   rails-flog
+  rails_config
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers
+  simple_form
   spring-commands-rspec
   test-queue
   therubyracer

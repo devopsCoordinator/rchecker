@@ -1,25 +1,20 @@
-<%= form_for(@area) do |f| %>
-  <% if @area.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@area.errors.count, "error") %> prohibited this area from being saved:</h2>
-
-      <ul>
-      <% @area.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= simple_form_for @area, :html => { :class => 'form-horizontal' } do |f| %>
+    <fieldset>
+        <div class="form-group">
+          <div class="col-lg-3">
+      <%= f.input :name ,label: "地域名"%>
     </div>
-  <% end %>
+    </div>
+      <div class="form-group">
+        <div class="col-lg-3">
+      <%= f.input :memo ,label: "備考"  %>
+    </div>
+    </div>
+      <div class="form-group">
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <%= f.submit '登録', :class => 'btn btn-primary btn' %>
+      <%= link_to t('.cancel', :default => t("戻る")), areas_path, :class => 'btn btn-default btn' %>
   </div>
-  <div class="field">
-    <%= f.label :memo %><br>
-    <%= f.text_area :memo %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </fieldset>
+  
 <% end %>

@@ -10,11 +10,27 @@ gem 'enumerize'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'therubyracer', platforms: :ruby
+gem 'draper'
 
+# 設定関連
+gem 'rails_config'
+
+# 描画関連
+gem 'lazy_high_charts'
+
+# ページング関連
+gem 'kaminari'
+
+# フォーム関連
+gem 'simple_form'
+
+# ドキュメント関連
+gem 'annotate'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # DB関連
 gem 'pg'
+gem 'paranoia'
 
 # CSS関連
 gem 'sass-rails', '~> 5.0'

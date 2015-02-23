@@ -7,15 +7,13 @@ RSpec.describe "representatives/index", type: :view do
         :name => "Name",
         :email => "Email",
         :mobile => "Mobile",
-        :area_id => 1,
-        :memo => "MyText"
+        :area_id => 1
       ),
       Representative.create!(
         :name => "Name",
         :email => "Email",
         :mobile => "Mobile",
-        :area_id => 1,
-        :memo => "MyText"
+        :area_id => 1
       )
     ])
   end
@@ -26,6 +24,5 @@ RSpec.describe "representatives/index", type: :view do
     assert_select "tr>td", :text => "Email".to_s, :count => 2
     assert_select "tr>td", :text => "Mobile".to_s, :count => 2
     assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
   end
 end

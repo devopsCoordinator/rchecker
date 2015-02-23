@@ -5,8 +5,6 @@ RSpec.describe "devices/edit", type: :view do
     @device = assign(:device, Device.create!(
       :uuid => "MyString",
       :model => "MyString",
-      :department => "MyString",
-      :location => "MyString",
       :memo => "MyText"
     ))
   end
@@ -19,10 +17,6 @@ RSpec.describe "devices/edit", type: :view do
       assert_select "input#device_uuid[name=?]", "device[uuid]"
 
       assert_select "input#device_model[name=?]", "device[model]"
-
-      assert_select "input#device_department[name=?]", "device[department]"
-
-      assert_select "input#device_location[name=?]", "device[location]"
 
       assert_select "textarea#device_memo[name=?]", "device[memo]"
     end

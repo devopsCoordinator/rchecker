@@ -5,7 +5,7 @@ module API
       helpers do
         # Strong Parametersの設定
         def device_params
-          ActionController::Parameters.new(params).permit(:uuid, :model, :department, :location, :memo )
+          ActionController::Parameters.new(params).permit(:uuid, :model, :memo )
         end
 
         # パラメータのチェック

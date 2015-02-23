@@ -6,8 +6,7 @@ RSpec.describe "representatives/show", type: :view do
       :name => "Name",
       :email => "Email",
       :mobile => "Mobile",
-      :area_id => 1,
-      :memo => "MyText"
+      :area_id => 1
     ))
   end
 
@@ -17,6 +16,5 @@ RSpec.describe "representatives/show", type: :view do
     expect(rendered).to match(/Email/)
     expect(rendered).to match(/Mobile/)
     expect(rendered).to match(/1/)
-    expect(rendered).to match(/MyText/)
   end
 end

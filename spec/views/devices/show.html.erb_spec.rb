@@ -5,8 +5,6 @@ RSpec.describe "devices/show", type: :view do
     @device = assign(:device, Device.create!(
       :uuid => "Uuid",
       :model => "Model",
-      :department => "Department",
-      :location => "Location",
       :memo => "MyText"
     ))
   end
@@ -15,8 +13,6 @@ RSpec.describe "devices/show", type: :view do
     render
     expect(rendered).to match(/Uuid/)
     expect(rendered).to match(/Model/)
-    expect(rendered).to match(/Department/)
-    expect(rendered).to match(/Location/)
     expect(rendered).to match(/MyText/)
   end
 end
