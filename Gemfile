@@ -23,6 +23,7 @@ gem 'kaminari'
 
 # フォーム関連
 gem 'simple_form'
+gem 'ransack'
 
 # ドキュメント関連
 gem 'annotate'
@@ -60,6 +61,7 @@ group :development do
   gem 'rails-erd'                        # rake-erdコマンドでActiveRecordからER図を作成できる
   gem 'spring-commands-rspec'            # bin/rspecコマンドを使えるようにし、rspecの起動を早めれる
   gem 'bullet'                           # n+1問題を発見
+  gem 'rack-mini-profiler'               # ボトルネック計測
 
   # 保守性を上げる
   gem 'rubocop', require: false          # コーディング規約の自動チェック

@@ -12,7 +12,9 @@
 #
 
 class Company < ActiveRecord::Base
-  has_one :representatives
-  has_many :locations
+  belongs_to :representative, class_name: "Representative", foreign_key: "representative_id"
+  belongs_to :area,class_name: "Area", foreign_key: "area_id"
+  has_many :locations,class_name: "Location", foreign_key: "company_id"
   has_many :devices, through: :locations
+
 end

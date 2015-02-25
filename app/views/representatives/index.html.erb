@@ -3,14 +3,46 @@
     <h1>担当者</h1>
 </div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">検索</div>
+  <div class="panel-body">
+  <%= search_form_for(@q,html: { method: :get, class: 'form-horizontal', role: 'form' }) do |f| %>
+  <fieldset>
+      <div class="form-group  col-lg-4">
+        <%= f.label :name_cont, "名前"%>
+        <%= f.text_field :name_cont , class: 'form-control' ,placeholder: "名前" %>
+      </div>
+
+      <div class="form-group  col-lg-4">
+        <%= f.label :email_count, "メールアドレス"%>
+        <%= f.text_field :email_cont , class: 'form-control' ,placeholder: "メールアドレス" %>
+      </div>
+
+      <div class="form-group  col-lg-4">
+        <%= f.label :mobile_count, "携帯メールアドレス"%>
+        <%= f.text_field :mobile_cont , class: 'form-control' ,placeholder: "携帯メールアドレス" %>
+      </div>
+
+      <div class="form-group col-lg-4">
+        <%= f.label :area_id , "地域" %><br />
+        <%= f.select :area_id_eq, options_from_collection_for_select(@areas, :id, :name, @q.area_id_eq), {include_blank: true}, {class: 'form-control'}  %>
+      </div>
+      <div class="form-group col-lg-12">
+        <%= f.submit '検索', :class => 'btn btn-default btn' %>
+      </div>
+  </fieldset>
+  <% end %>
+  </div>
+</div>
+
 <h2>一覧</h2>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>名前</th>
+      <th>地域</th>
       <th>メールアドレス</th>
       <th>携帯メールアドレス</th>
-      <th>地域</th>
+      <th>名前</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -18,10 +50,11 @@
   <tbody>
     <% @representatives.each do |representative| %>
       <tr>
+        <td><%= representative.area.name %></td>
         <td><%= representative.name %></td>
         <td><%= representative.email %></td>
         <td><%= representative.mobile %></td>
-        <td><%= representative.area_id %></td>
+
         <td>
           <%= link_to '照会', representative ,{:class => "btn btn-default btn"}%> <%= link_to '編集', edit_representative_path(representative) ,{:class => "btn btn-primary btn"} %> <%= link_to '削除', representative, :class => "btn btn-danger btn", method: :delete, data: { confirm: '一度削除すると、データは復元出来ませんがよろしいでしょうか?' } %>
         </td>

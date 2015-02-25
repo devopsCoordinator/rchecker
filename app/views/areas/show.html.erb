@@ -27,4 +27,5 @@
 </table>
 
 <%= link_to '編集', edit_area_path(@area)  ,{:class => "btn btn-primary btn"} %>
-<%= link_to t('.cancel', :default => t("戻る")), area_path, :class => 'btn btn-default btn' %>
+<% p area_path %>
+<%= link_to t('.cancel', :default => t("戻る")), areas_path, :class => 'btn btn-default btn' %>

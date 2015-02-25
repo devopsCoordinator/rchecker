@@ -10,6 +10,7 @@
 #
 
 class Area < ActiveRecord::Base
-	belongs_to :companies
-	belongs_to :representatives
+  belongs_to :company, class_name: "Company", foreign_key: "area_id"
+  belongs_to :representative, class_name: "Representative", foreign_key: "area_id"
+
 end

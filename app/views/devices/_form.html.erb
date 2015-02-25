@@ -1,25 +1,11 @@
 <%= simple_form_for @device, :html => { :class => 'form-horizontal' } do |f| %>
     <fieldset>
-        <div class="form-group">
-          <div class="col-lg-3">
       <%= f.input :uuid ,label: "製造コード"%>
-    </div>
-      </div>
-        <div class="form-group">
-          <div class="col-lg-3">
       <%= f.input :model ,label: "モデル" %>
-    </div>
-    </div>
-      <div class="form-group">
-        <div class="col-lg-3">
       <%= f.input :memo ,label: "備考"  %>
-    </div>
-    </div>
       <div class="form-group">
-
-      <%= f.submit '登録', :class => 'btn btn-primary btn' %>
-      <%= link_to t('.cancel', :default => t("戻る")), devices_path, :class => 'btn btn-default btn' %>
-  </div>
+        <%= f.submit '登録', :class => 'btn btn-primary btn' %>
+        <%= link_to t('.cancel', :default => t("戻る")), devices_path, :class => 'btn btn-default btn' %>
+      </div>
   </fieldset>
-  
 <% end %>

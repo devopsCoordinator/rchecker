@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   resources :representatives
 
   resources :companies
-
+  
   get 'welcome/index'
-
   root 'welcome#index'
 
   # API対応
