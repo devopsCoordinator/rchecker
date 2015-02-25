@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  uuid       :string
-#  model      :string
+#  model_type :string
 #  memo       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

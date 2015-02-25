@@ -18,14 +18,18 @@
   		<td>製造コード</td>
   		<td><%= @device.uuid %></td>
   	</tr>
-  	  	<tr>
+  	<tr>
   		<td>モデル</td>
-  		<td><%= @device.model %></td>
+  		<td><%= @device.model_type %></td>
   	</tr>
-  	  	<tr>
+  	<tr>
   		<td>備考</td>
   		<td><%= @device.memo %></td>
   	</tr>
+    <tr>
+      <td>登録日</td>
+      <td><%= @device.created_at %></td>
+    </tr>
   </tbody>
 </table>
 

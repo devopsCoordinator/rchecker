@@ -12,8 +12,8 @@
         <%= f.text_field :uuid_cont , class: 'form-control' ,placeholder: "製造コード" %>
       </div>
       <div class="form-group col-lg-12">
-        <%= f.label :model_cont, "モデル"%>
-        <%= f.text_field :model_cont , class: 'form-control' ,placeholder: "モデル"%>
+        <%= f.label :model_type_cont, "モデル"%>
+        <%= f.text_field :model_type_cont , class: 'form-control' ,placeholder: "モデル"%>
       </div>
       <div class="form-group col-lg-12">
         <%= f.label :memo_cont, "備考"%>
@@ -43,7 +43,7 @@
     <% @devices.each do |device| %>
       <tr>
         <td><%= device.uuid %></td>
-        <td><%= device.model %></td>
+        <td><%= device.model_type %></td>
         <td><%= device.memo %></td>
         <td><%= device.created_at %></td>
         <td>

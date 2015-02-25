@@ -1,0 +1,264 @@
+2015-02-25 06:42:02[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+2015-02-25 06:42:19[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 06:42:19[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:05:33[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+2015-02-25 08:05:41[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:05:41[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:17:13[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:17:13[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:17:25[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+2015-02-25 08:42:32[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:42:32[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:44:51[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:44:51[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+2015-02-25 08:58:48[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 08:58:48[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 08:58:49[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 08:58:49[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 08:59:04[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 08:59:04[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 08:59:40[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+2015-02-25 08:59:41[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+2015-02-25 09:01:15[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+2015-02-25 09:03:53[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+2015-02-25 09:04:13[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+2015-02-25 09:04:18[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+2015-02-25 09:04:52[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+2015-02-25 09:04:55[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 09:04:55[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 09:05:09[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 09:05:09[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 09:05:17[WARN] user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+2015-02-25 09:05:21[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+2015-02-25 09:05:21[WARN] user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'

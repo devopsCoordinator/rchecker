@@ -18,13 +18,17 @@
   		<td><%= @company.name %></td>
   	</tr>
   	  	<tr>
-  		<td>地域コード</td>
+  		<td>地域</td>
   		<td><%= @company.area.name %></td>
   	</tr>
   	  	<tr>
   		<td>担当者</td>
   		<td><%= @company.representative.name %></td>
   	</tr>
+    <tr>
+      <td>登録日</td>
+      <td><%= @company.created_at %></td>
+    </tr>
   </tbody>
 </table>
 

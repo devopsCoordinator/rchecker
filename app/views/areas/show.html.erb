@@ -18,10 +18,14 @@
   		<td>地域名</td>
   		<td><%= @area.name %></td>
   	</tr>
-  	  	<tr>
+  	<tr>
   		<td>備考</td>
     		<td><%= @area.memo %></td>
-    	</tr>
+    </tr>
+    <tr>
+        <td>登録日</td>
+        <td><%= @area.created_at %></td>
+      </tr>
   	</tr>
   </tbody>
 </table>

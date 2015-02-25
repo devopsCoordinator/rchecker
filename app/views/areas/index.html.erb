@@ -29,6 +29,7 @@
     <tr>
       <th>地域名</th>
       <th>備考</th>
+      <th>登録日</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -38,6 +39,7 @@
       <tr>
         <td><%= area.name %></td>
         <td><%= area.memo %></td>
+        <td><%= area.created_at %></td>
         <td>
           <%= link_to '照会', area ,{:class => "btn btn-default btn"}%> <%= link_to '編集', edit_area_path(area) ,{:class => "btn btn-primary btn"} %> <%= link_to '削除', area, :class => "btn btn-danger btn", method: :delete, data: { confirm: '一度削除すると、データは復元出来ませんがよろしいでしょうか?' } %>
         </td>

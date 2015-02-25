@@ -38982,3 +38982,2358 @@ Completed 200 OK in 3718ms (Views: 3685.9ms | ActiveRecord: 4.5ms)
 		"devices" . *
 	FROM
 		"devices"[0m
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 06:42:00 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m
+	SELECT
+		"schema_migrations" . *
+	FROM
+		"schema_migrations"[0m
+Processing by RepresentativesController#index as HTML
+  [1m[35mArea Load (2.4ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (2.3ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC[0m
+  [1m[35mArea Load (1.4ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (221.3ms)
+Completed 200 OK in 701ms (Views: 628.4ms | ActiveRecord: 21.7ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 06:42:18 +0000
+Processing by CompaniesController#index as HTML
+  [1m[35mArea Load (1.5ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (3.3ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"[0m
+  [1m[35mCompany Load (5.0ms)[0m  
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC
+  [1m[36mArea Load (3.4ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mRepresentative Load (1.5ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mArea Load (2.1ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mRepresentative Load (1.7ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (288.7ms)
+Completed 200 OK in 489ms (Views: 450.3ms | ActiveRecord: 26.7ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+
+
+Started GET "/areas" for 192.168.50.1 at 2015-02-25 07:38:05 +0000
+Processing by AreasController#index as HTML
+  [1m[36mArea Load (1.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	ORDER BY
+		"areas" . "name" ASC[0m
+  Rendered areas/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 412ms (Views: 400.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/areas" for 192.168.50.1 at 2015-02-25 08:05:29 +0000
+Processing by AreasController#index as HTML
+  [1m[35mArea Load (1.6ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	ORDER BY
+		"areas" . "name" ASC
+  Rendered areas/index.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 245ms (Views: 235.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 08:05:33 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[36mArea Load (2.7ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (3.6ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC
+  [1m[36mArea Load (3.6ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (86.7ms)
+Completed 200 OK in 371ms (Views: 355.5ms | ActiveRecord: 9.9ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 08:05:41 +0000
+Processing by CompaniesController#index as HTML
+  [1m[36mArea Load (1.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (1.3ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+  [1m[36mCompany Load (2.6ms)[0m  [1m
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC[0m
+  [1m[35mArea Load (1.9ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mRepresentative Load (3.4ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mArea Load (3.0ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mRepresentative Load (5.3ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (118.7ms)
+Completed 200 OK in 363ms (Views: 338.2ms | ActiveRecord: 19.3ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m
+	SELECT
+		"schema_migrations" . *
+	FROM
+		"schema_migrations"[0m
+Migrating to RenameCloumnToDevices (20150225081018)
+  [1m[35m (0.1ms)[0m  
+	BEGIN
+  [1m[36m (0.4ms)[0m  [1m
+	ALTER TABLE
+	"devices" RENAME COLUMN "model" TO "model_type"[0m
+  [1m[35m (0.1ms)[0m  
+	ALTER INDEX "index_devices_on_model" RENAME TO "index_devices_on_model_type"
+  [1m[36mSQL (4.0ms)[0m  [1m
+	INSERT
+	INTO
+		"schema_migrations" ("version")
+	VALUES ($1)[0m  [["version", "20150225081018"]]
+  [1m[35m (12.3ms)[0m  
+	COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m
+	SELECT
+		"schema_migrations" . *
+	FROM
+		"schema_migrations"[0m
+  [1m[35m (3.3ms)[0m  
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'admin_areas'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+
+  [1m[36m (1.6ms)[0m  [1m
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'admin_companies'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+[0m
+  [1m[35m (3.0ms)[0m  
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'admin_devices'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+
+  [1m[36m (2.9ms)[0m  [1m
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'admin_locations'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+[0m
+  [1m[35m (2.7ms)[0m  
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'admin_representatives'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+
+  [1m[36m (2.4ms)[0m  [1m
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'admin_supplies'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+[0m
+  [1m[35m (3.3ms)[0m  
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'areas'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+
+  [1m[36m (2.3ms)[0m  [1m
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'companies'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+[0m
+  [1m[35m (1.8ms)[0m  
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'devices'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+
+  [1m[36m (11.3ms)[0m  [1m
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'locations'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+[0m
+  [1m[35m (2.9ms)[0m  
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'representatives'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+
+  [1m[36m (2.2ms)[0m  [1m
+	SELECT
+		t2.oid : : regclass : : text AS to_table
+		,a1.attname AS COLUMN
+		,a2.attname AS primary_key
+		,c.conname AS name
+		,c.confupdtype AS on_update
+		,c.confdeltype AS on_delete
+	FROM
+		pg_constraint c JOIN pg_class t1
+			ON c.conrelid = t1.oid JOIN pg_class t2
+			ON c.confrelid = t2.oid JOIN pg_attribute a1
+			ON a1.attnum = c.conkey[1]
+		AND a1.attrelid = t1.oid JOIN pg_attribute a2
+			ON a2.attnum = c.confkey[1]
+		AND a2.attrelid = t2.oid JOIN pg_namespace t3
+			ON c.connamespace = t3.oid
+	WHERE
+		c.contype = 'f'
+		AND t1.relname = 'supplies'
+		AND t3.nspname = ANY (
+			current_schemas (FALSE)
+		)
+	ORDER BY
+		c.conname
+[0m
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 08:17:12 +0000
+  [1m[35mActiveRecord::SchemaMigration Load (1.3ms)[0m  
+	SELECT
+		"schema_migrations" . *
+	FROM
+		"schema_migrations"
+Processing by CompaniesController#index as HTML
+  [1m[36mArea Load (1.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (2.7ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+  [1m[36mCompany Load (1.7ms)[0m  [1m
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC[0m
+  [1m[35mArea Load (1.6ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mRepresentative Load (3.1ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mArea Load (3.1ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mRepresentative Load (4.5ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (438.5ms)
+Completed 200 OK in 750ms (Views: 690.3ms | ActiveRecord: 44.0ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+
+
+Started GET "/areas" for 192.168.50.1 at 2015-02-25 08:17:21 +0000
+Processing by AreasController#index as HTML
+  [1m[35mArea Load (2.1ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	ORDER BY
+		"areas" . "name" ASC
+  Rendered areas/index.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 316ms (Views: 305.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 08:17:24 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[36mArea Load (1.7ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (1.9ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC
+  [1m[36mArea Load (5.1ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (112.6ms)
+Completed 200 OK in 553ms (Views: 512.4ms | ActiveRecord: 8.7ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:17:30 +0000
+Processing by DevicesController#index as HTML
+  Rendered devices/index.html.erb within layouts/application (51.9ms)
+Completed 500 Internal Server Error in 92ms
+
+ActionView::Template::Error (undefined method `model_cont' for Ransack::Search<class: Device, base: Grouping <combinator: and>>:Ransack::Search):
+    13:       </div>
+    14:       <div class="form-group col-lg-12">
+    15:         <%= f.label :model_cont, "モデル"%>
+    16:         <%= f.text_field :model_cont , class: 'form-control' ,placeholder: "モデル"%>
+    17:       </div>
+    18:       <div class="form-group col-lg-12">
+    19:         <%= f.label :memo_cont, "備考"%>
+  app/views/devices/index.html.erb:16:in `block in _app_views_devices_index_html_erb__4439683335022765483_101427880'
+  app/views/devices/index.html.erb:8:in `_app_views_devices_index_html_erb__4439683335022765483_101427880'
+
+
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.2ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (47.7ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:29:05 +0000
+Processing by DevicesController#index as HTML
+  [1m[36mDevice Load (2.4ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC[0m
+  Rendered devices/index.html.erb within layouts/application (191.1ms)
+Completed 200 OK in 656ms (Views: 439.1ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/areas" for 192.168.50.1 at 2015-02-25 08:42:26 +0000
+Processing by AreasController#index as HTML
+  [1m[35mArea Load (2.8ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	ORDER BY
+		"areas" . "name" ASC
+  Rendered areas/index.html.erb within layouts/application (284.7ms)
+Completed 200 OK in 1024ms (Views: 997.0ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 08:42:30 +0000
+Processing by CompaniesController#index as HTML
+  [1m[36mArea Load (2.1ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (3.0ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+  [1m[36mCompany Load (4.2ms)[0m  [1m
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC[0m
+  [1m[35mArea Load (3.2ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mRepresentative Load (3.7ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mArea Load (2.4ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mRepresentative Load (430.8ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (844.7ms)
+Completed 200 OK in 1815ms (Views: 1330.5ms | ActiveRecord: 465.6ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:42:34 +0000
+Processing by DevicesController#index as HTML
+  [1m[35mDevice Load (2.9ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC
+  Rendered devices/index.html.erb within layouts/application (68.9ms)
+Completed 200 OK in 345ms (Views: 326.2ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:43:18 +0000
+Processing by DevicesController#index as HTML
+  [1m[36mDevice Load (36.2ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC[0m
+  Rendered devices/index.html.erb within layouts/application (306.1ms)
+Completed 200 OK in 762ms (Views: 721.1ms | ActiveRecord: 36.2ms)
+
+
+Started GET "/devices/5" for 192.168.50.1 at 2015-02-25 08:43:37 +0000
+Processing by DevicesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDevice Load (3.4ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	WHERE
+		"devices" . "id" = $1 LIMIT 1  [["id", 5]]
+  Rendered devices/show.html.erb within layouts/application (711.7ms)
+Completed 200 OK in 1156ms (Views: 998.1ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:43:41 +0000
+Processing by DevicesController#index as HTML
+  [1m[36mDevice Load (2.2ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC[0m
+  Rendered devices/index.html.erb within layouts/application (31.7ms)
+Completed 200 OK in 326ms (Views: 300.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:44:24 +0000
+Processing by DevicesController#index as HTML
+  [1m[35mDevice Load (3.8ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC
+  Rendered devices/index.html.erb within layouts/application (118.9ms)
+Completed 200 OK in 530ms (Views: 505.8ms | ActiveRecord: 14.5ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:44:39 +0000
+Processing by DevicesController#index as HTML
+  [1m[36mDevice Load (4.6ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC[0m
+  Rendered devices/index.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 483ms (Views: 471.8ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 08:44:50 +0000
+Processing by CompaniesController#index as HTML
+  [1m[35mArea Load (8.3ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (1.9ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"[0m
+  [1m[35mCompany Load (3.8ms)[0m  
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC
+  [1m[36mArea Load (1.6ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mRepresentative Load (3.5ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mArea Load (2.4ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mRepresentative Load (3.0ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (563.8ms)
+Completed 200 OK in 861ms (Views: 731.3ms | ActiveRecord: 109.4ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:50:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:52:in `block in _app_views_companies_index_html_erb___1809181646228164895_72324320'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:48:in `_app_views_companies_index_html_erb___1809181646228164895_72324320'
+
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:44:57 +0000
+Processing by DevicesController#index as HTML
+  [1m[36mDevice Load (3.0ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC[0m
+  Rendered devices/index.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 383ms (Views: 366.1ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/devices/5" for 192.168.50.1 at 2015-02-25 08:47:51 +0000
+Processing by DevicesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDevice Load (1.6ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	WHERE
+		"devices" . "id" = $1 LIMIT 1  [["id", 5]]
+  Rendered devices/show.html.erb within layouts/application (38.5ms)
+Completed 500 Internal Server Error in 260ms
+
+ActionView::Template::Error (undefined local variable or method `device' for #<#<Class:0x007fb0d19ffc70>:0x007fb0d1883ae0>):
+    28:   	</tr>
+    29:         <tr>
+    30:       <td>備考</td>
+    31:       <td><%= device.created_at %></td>
+    32:     </tr>
+    33:   </tbody>
+    34: </table>
+  app/views/devices/show.html.erb:31:in `_app_views_devices_show_html_erb__3939527264055505279_70198703165320'
+
+
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.0ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.0ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (52.7ms)
+
+
+Started GET "/devices/5" for 192.168.50.1 at 2015-02-25 08:48:03 +0000
+Processing by DevicesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDevice Load (1.6ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	WHERE
+		"devices" . "id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered devices/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 460ms (Views: 446.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/devices/5" for 192.168.50.1 at 2015-02-25 08:48:29 +0000
+Processing by DevicesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDevice Load (5.5ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	WHERE
+		"devices" . "id" = $1 LIMIT 1  [["id", 5]]
+  Rendered devices/show.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 846ms (Views: 808.5ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:48:44 +0000
+Processing by DevicesController#index as HTML
+  [1m[36mDevice Load (3.4ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC[0m
+  Rendered devices/index.html.erb within layouts/application (69.5ms)
+Completed 200 OK in 693ms (Views: 673.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/devices/5" for 192.168.50.1 at 2015-02-25 08:49:00 +0000
+Processing by DevicesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDevice Load (1.2ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	WHERE
+		"devices" . "id" = $1 LIMIT 1  [["id", 5]]
+  Rendered devices/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 274ms (Views: 264.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:49:10 +0000
+Processing by DevicesController#index as HTML
+  [1m[36mDevice Load (4.0ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC[0m
+  Rendered devices/index.html.erb within layouts/application (65.4ms)
+Completed 200 OK in 370ms (Views: 346.3ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/devices/5/edit" for 192.168.50.1 at 2015-02-25 08:49:20 +0000
+Processing by DevicesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDevice Load (7.8ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	WHERE
+		"devices" . "id" = $1 LIMIT 1  [["id", 5]]
+  Rendered devices/_form.html.erb (55.3ms)
+  Rendered devices/edit.html.erb within layouts/application (178.7ms)
+Completed 500 Internal Server Error in 363ms
+
+ActionView::Template::Error (undefined method `model' for #<Device:0x00000009c6a1c0>):
+    1: <%= simple_form_for @device, :html => { :class => 'form-horizontal' } do |f| %>
+    2:     <fieldset>
+    3:       <%= f.input :uuid ,label: "製造コード"%>
+    4:       <%= f.input :model ,label: "モデル" %>
+    5:       <%= f.input :memo ,label: "備考"  %>
+    6:       <div class="form-group">
+    7:         <%= f.submit '登録', :class => 'btn btn-primary btn' %>
+  app/views/devices/_form.html.erb:4:in `block in _app_views_devices__form_html_erb__4343040936745352126_81917620'
+  app/views/devices/_form.html.erb:1:in `_app_views_devices__form_html_erb__4343040936745352126_81917620'
+  app/views/devices/edit.html.erb:9:in `_app_views_devices_edit_html_erb__693411170646063198_81992840'
+
+
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (22.3ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.0ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (42.9ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (106.7ms)
+
+
+Started GET "/devices/5/edit" for 192.168.50.1 at 2015-02-25 08:49:43 +0000
+Processing by DevicesController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mDevice Load (1.8ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	WHERE
+		"devices" . "id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered devices/_form.html.erb (49.0ms)
+  Rendered devices/edit.html.erb within layouts/application (53.2ms)
+Completed 200 OK in 589ms (Views: 572.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 08:50:28 +0000
+Processing by DevicesController#index as HTML
+  [1m[35mDevice Load (4.3ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC
+  Rendered devices/index.html.erb within layouts/application (74.0ms)
+Completed 200 OK in 385ms (Views: 376.6ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/areas" for 192.168.50.1 at 2015-02-25 08:55:01 +0000
+Processing by AreasController#index as HTML
+  [1m[36mArea Load (24.0ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	ORDER BY
+		"areas" . "name" ASC[0m
+  Rendered areas/index.html.erb within layouts/application (97.2ms)
+Completed 200 OK in 456ms (Views: 414.8ms | ActiveRecord: 32.2ms)
+
+
+Started GET "/areas/4" for 192.168.50.1 at 2015-02-25 08:55:07 +0000
+Processing by AreasController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mArea Load (2.9ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  Rendered areas/show.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 378ms (Views: 242.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/areas" for 192.168.50.1 at 2015-02-25 08:55:17 +0000
+Processing by AreasController#index as HTML
+  [1m[36mArea Load (3.0ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	ORDER BY
+		"areas" . "name" ASC[0m
+  Rendered areas/index.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 269ms (Views: 240.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 08:58:47 +0000
+Processing by CompaniesController#index as HTML
+  [1m[35mArea Load (2.8ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (3.2ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"[0m
+  [1m[35mCompany Load (4.3ms)[0m  
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC
+  [1m[36mArea Load (4.0ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mRepresentative Load (3.4ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mArea Load (3.1ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mRepresentative Load (3.1ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (250.9ms)
+Completed 200 OK in 530ms (Views: 462.6ms | ActiveRecord: 38.7ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 08:58:48 +0000
+Processing by CompaniesController#index as HTML
+  [1m[36mArea Load (2.6ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (1.9ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+  [1m[36mCompany Load (2.0ms)[0m  [1m
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC[0m
+  [1m[35mArea Load (1.6ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mRepresentative Load (1.9ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mArea Load (1.9ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mRepresentative Load (2.1ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (103.9ms)
+Completed 200 OK in 352ms (Views: 332.9ms | ActiveRecord: 14.0ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+
+
+Started GET "/companies/1" for 192.168.50.1 at 2015-02-25 08:58:56 +0000
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompany Load (1.1ms)[0m  
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	WHERE
+		"companies" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mArea Load (2.5ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mRepresentative Load (2.7ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 1]]
+  Rendered companies/show.html.erb within layouts/application (62.0ms)
+Completed 200 OK in 483ms (Views: 460.5ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 08:59:03 +0000
+Processing by CompaniesController#index as HTML
+  [1m[36mArea Load (4.0ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (2.4ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+  [1m[36mCompany Load (2.2ms)[0m  [1m
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC[0m
+  [1m[35mArea Load (4.9ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mRepresentative Load (2.2ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mArea Load (1.6ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mRepresentative Load (2.1ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (118.7ms)
+Completed 200 OK in 936ms (Views: 912.0ms | ActiveRecord: 19.4ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+
+
+Started GET "/companies?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Barea_id_eq%5D=&q%5Brepresentative_id_eq%5D=2&q%5Bmemo_cont%5D=&commit=%E6%A4%9C%E7%B4%A2" for 192.168.50.1 at 2015-02-25 08:59:12 +0000
+Processing by CompaniesController#index as HTML
+  Parameters: 
+{
+      "utf8"[0;37m => [0m[0;33m"✓"[0m,
+         "q"[0;37m => [0m{
+                   "name_cont"[0;37m => [0m[0;33m""[0m,
+                  "area_id_eq"[0;37m => [0m[0;33m""[0m,
+        "representative_id_eq"[0;37m => [0m[0;33m"2"[0m,
+                   "memo_cont"[0;37m => [0m[0;33m""[0m
+    },
+    "commit"[0;37m => [0m[0;33m"検索"[0m
+}
+  [1m[35mArea Load (4.0ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (2.2ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"[0m
+  [1m[35mCompany Load (2.1ms)[0m  
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	WHERE
+		"companies" . "representative_id" = 2
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC
+  [1m[36mArea Load (3.0ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mRepresentative Load (3.2ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (180.5ms)
+Completed 200 OK in 601ms (Views: 450.3ms | ActiveRecord: 39.0ms)
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 08:59:40 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[36mArea Load (4.3ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (1.8ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC
+  [1m[36mArea Load (1.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (86.2ms)
+Completed 200 OK in 428ms (Views: 406.1ms | ActiveRecord: 7.9ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 08:59:40 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[36mArea Load (2.1ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (1.6ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC
+  [1m[36mArea Load (1.7ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (31.9ms)
+Completed 200 OK in 300ms (Views: 286.8ms | ActiveRecord: 5.4ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:53:in `block in _app_views_representatives_index_html_erb___1437489722916567858_81437000'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:51:in `_app_views_representatives_index_html_erb___1437489722916567858_81437000'
+
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 09:01:15 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[36mArea Load (2.4ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (5.1ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC
+  [1m[36mArea Load (3.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (71.5ms)
+Completed 200 OK in 431ms (Views: 411.0ms | ActiveRecord: 11.4ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+
+
+
+Started GET "/representatives?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bemail_cont%5D=&q%5Bmobile_cont%5D=&q%5Barea_id_eq%5D=1&commit=%E6%A4%9C%E7%B4%A2" for 192.168.50.1 at 2015-02-25 09:01:21 +0000
+Processing by RepresentativesController#index as HTML
+  Parameters: 
+{
+      "utf8"[0;37m => [0m[0;33m"✓"[0m,
+         "q"[0;37m => [0m{
+          "name_cont"[0;37m => [0m[0;33m""[0m,
+         "email_cont"[0;37m => [0m[0;33m""[0m,
+        "mobile_cont"[0;37m => [0m[0;33m""[0m,
+         "area_id_eq"[0;37m => [0m[0;33m"1"[0m
+    },
+    "commit"[0;37m => [0m[0;33m"検索"[0m
+}
+  [1m[36mArea Load (1.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+Completed 500 Internal Server Error in 50ms
+
+NameError (undefined local variable or method `search_params' for #<RepresentativesController:0x007fb0d1a5e748>):
+  app/controllers/representatives_controller.rb:6:in `index'
+
+
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.7ms)
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 09:03:53 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[35mArea Load (1.8ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (2.6ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC[0m
+  [1m[35mArea Load (3.1ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (47.4ms)
+Completed 200 OK in 509ms (Views: 497.6ms | ActiveRecord: 7.5ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+
+
+
+Started GET "/representatives?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bemail_cont%5D=&q%5Bmobile_cont%5D=&q%5Barea_id_eq%5D=1&commit=%E6%A4%9C%E7%B4%A2" for 192.168.50.1 at 2015-02-25 09:03:58 +0000
+Processing by RepresentativesController#index as HTML
+  Parameters: 
+{
+      "utf8"[0;37m => [0m[0;33m"✓"[0m,
+         "q"[0;37m => [0m{
+          "name_cont"[0;37m => [0m[0;33m""[0m,
+         "email_cont"[0;37m => [0m[0;33m""[0m,
+        "mobile_cont"[0;37m => [0m[0;33m""[0m,
+         "area_id_eq"[0;37m => [0m[0;33m"1"[0m
+    },
+    "commit"[0;37m => [0m[0;33m"検索"[0m
+}
+  [1m[35mArea Load (3.5ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+Completed 500 Internal Server Error in 131ms
+
+NameError (undefined local variable or method `search_params' for #<RepresentativesController:0x00000008e8ee98>):
+  app/controllers/representatives_controller.rb:6:in `index'
+
+
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.1ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.2ms)
+
+
+Started GET "/representatives?utf8=%E2%9C%93&q%5Bname_cont%5D=&q%5Bemail_cont%5D=&q%5Bmobile_cont%5D=&q%5Barea_id_eq%5D=1&commit=%E6%A4%9C%E7%B4%A2" for 192.168.50.1 at 2015-02-25 09:04:09 +0000
+Processing by RepresentativesController#index as HTML
+  Parameters: 
+{
+      "utf8"[0;37m => [0m[0;33m"✓"[0m,
+         "q"[0;37m => [0m{
+          "name_cont"[0;37m => [0m[0;33m""[0m,
+         "email_cont"[0;37m => [0m[0;33m""[0m,
+        "mobile_cont"[0;37m => [0m[0;33m""[0m,
+         "area_id_eq"[0;37m => [0m[0;33m"1"[0m
+    },
+    "commit"[0;37m => [0m[0;33m"検索"[0m
+}
+  [1m[36mArea Load (1.9ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+Completed 500 Internal Server Error in 24ms
+
+NameError (undefined local variable or method `search_params' for #<RepresentativesController:0x0000000c281c78>):
+  app/controllers/representatives_controller.rb:6:in `index'
+
+
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.9ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.1ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered vendor/bundle/ruby/2.1.0/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (41.6ms)
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 09:04:13 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[35mArea Load (2.6ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (1.9ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC[0m
+  [1m[35mArea Load (62.7ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (110.8ms)
+Completed 200 OK in 362ms (Views: 288.7ms | ActiveRecord: 67.3ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 09:04:17 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[35mArea Load (1.6ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (3.0ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC[0m
+  [1m[35mArea Load (2.4ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (167.7ms)
+Completed 200 OK in 557ms (Views: 523.8ms | ActiveRecord: 21.1ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+
+
+
+Started GET "/representatives?utf8=%E2%9C%93&q%5Bname_cont%5D=%E4%B8%AD%E9%87%8E&q%5Bemail_cont%5D=&q%5Bmobile_cont%5D=&q%5Barea_id_eq%5D=1&commit=%E6%A4%9C%E7%B4%A2" for 192.168.50.1 at 2015-02-25 09:04:31 +0000
+Processing by RepresentativesController#index as HTML
+  Parameters: 
+{
+      "utf8"[0;37m => [0m[0;33m"✓"[0m,
+         "q"[0;37m => [0m{
+          "name_cont"[0;37m => [0m[0;33m"中野"[0m,
+         "email_cont"[0;37m => [0m[0;33m""[0m,
+        "mobile_cont"[0;37m => [0m[0;33m""[0m,
+         "area_id_eq"[0;37m => [0m[0;33m"1"[0m
+    },
+    "commit"[0;37m => [0m[0;33m"検索"[0m
+}
+  [1m[35mArea Load (4.9ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (3.1ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		(
+			"representatives" . "name" ILIKE '%中野%'
+			AND "representatives" . "area_id" = 1
+		)
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC[0m
+  [1m[35mArea Load (3.1ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (347.0ms)
+Completed 200 OK in 1008ms (Views: 698.5ms | ActiveRecord: 62.8ms)
+
+
+Started GET "/representatives?utf8=%E2%9C%93&q%5Bname_cont%5D=%E4%B8%AD%E9%87%8E&q%5Bemail_cont%5D=&q%5Bmobile_cont%5D=&q%5Barea_id_eq%5D=&commit=%E6%A4%9C%E7%B4%A2" for 192.168.50.1 at 2015-02-25 09:04:39 +0000
+Processing by RepresentativesController#index as HTML
+  Parameters: 
+{
+      "utf8"[0;37m => [0m[0;33m"✓"[0m,
+         "q"[0;37m => [0m{
+          "name_cont"[0;37m => [0m[0;33m"中野"[0m,
+         "email_cont"[0;37m => [0m[0;33m""[0m,
+        "mobile_cont"[0;37m => [0m[0;33m""[0m,
+         "area_id_eq"[0;37m => [0m[0;33m""[0m
+    },
+    "commit"[0;37m => [0m[0;33m"検索"[0m
+}
+  [1m[36mArea Load (4.2ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (4.1ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		(
+			"representatives" . "name" ILIKE '%中野%'
+		)
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC
+  [1m[36mArea Load (3.6ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (153.0ms)
+Completed 200 OK in 713ms (Views: 533.6ms | ActiveRecord: 44.9ms)
+
+
+Started GET "/representatives?utf8=%E2%9C%93&q%5Bname_cont%5D=%E4%B8%AD%E9%87%8E&q%5Bemail_cont%5D=&q%5Bmobile_cont%5D=&q%5Barea_id_eq%5D=&commit=%E6%A4%9C%E7%B4%A2" for 192.168.50.1 at 2015-02-25 09:04:40 +0000
+Processing by RepresentativesController#index as HTML
+  Parameters: 
+{
+      "utf8"[0;37m => [0m[0;33m"✓"[0m,
+         "q"[0;37m => [0m{
+          "name_cont"[0;37m => [0m[0;33m"中野"[0m,
+         "email_cont"[0;37m => [0m[0;33m""[0m,
+        "mobile_cont"[0;37m => [0m[0;33m""[0m,
+         "area_id_eq"[0;37m => [0m[0;33m""[0m
+    },
+    "commit"[0;37m => [0m[0;33m"検索"[0m
+}
+  [1m[35mArea Load (1.7ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (1.9ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		(
+			"representatives" . "name" ILIKE '%中野%'
+		)
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC[0m
+  [1m[35mArea Load (2.3ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (62.3ms)
+Completed 200 OK in 354ms (Views: 268.4ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/representatives?utf8=%E2%9C%93&q%5Bname_cont%5D=%E4%B8%AD%E9%87%8E&q%5Bemail_cont%5D=&q%5Bmobile_cont%5D=&q%5Barea_id_eq%5D=4&commit=%E6%A4%9C%E7%B4%A2" for 192.168.50.1 at 2015-02-25 09:04:44 +0000
+Processing by RepresentativesController#index as HTML
+  Parameters: 
+{
+      "utf8"[0;37m => [0m[0;33m"✓"[0m,
+         "q"[0;37m => [0m{
+          "name_cont"[0;37m => [0m[0;33m"中野"[0m,
+         "email_cont"[0;37m => [0m[0;33m""[0m,
+        "mobile_cont"[0;37m => [0m[0;33m""[0m,
+         "area_id_eq"[0;37m => [0m[0;33m"4"[0m
+    },
+    "commit"[0;37m => [0m[0;33m"検索"[0m
+}
+  [1m[36mArea Load (1.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (2.0ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		(
+			"representatives" . "name" ILIKE '%中野%'
+			AND "representatives" . "area_id" = 4
+		)
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC
+  Rendered representatives/index.html.erb within layouts/application (185.4ms)
+Completed 200 OK in 712ms (Views: 401.3ms | ActiveRecord: 157.3ms)
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 09:04:52 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[36mArea Load (1.9ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (3.8ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC
+  [1m[36mArea Load (1.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (44.7ms)
+Completed 200 OK in 292ms (Views: 278.1ms | ActiveRecord: 7.6ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 09:04:55 +0000
+Processing by CompaniesController#index as HTML
+  [1m[36mArea Load (2.1ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (2.1ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+  [1m[36mCompany Load (2.7ms)[0m  [1m
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC[0m
+  [1m[35mArea Load (2.1ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mRepresentative Load (3.5ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mArea Load (1.9ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mRepresentative Load (3.1ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (201.9ms)
+Completed 200 OK in 541ms (Views: 490.9ms | ActiveRecord: 26.3ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+
+
+Started GET "/companies/1" for 192.168.50.1 at 2015-02-25 09:05:07 +0000
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompany Load (2.0ms)[0m  
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	WHERE
+		"companies" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mArea Load (2.9ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mRepresentative Load (2.9ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 1]]
+  Rendered companies/show.html.erb within layouts/application (33.7ms)
+Completed 200 OK in 314ms (Views: 291.6ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 09:05:09 +0000
+Processing by CompaniesController#index as HTML
+  [1m[36mArea Load (26.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (1.9ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+  [1m[36mCompany Load (2.1ms)[0m  [1m
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC[0m
+  [1m[35mArea Load (3.6ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mRepresentative Load (2.5ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mArea Load (2.8ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mRepresentative Load (1.9ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (108.9ms)
+Completed 200 OK in 546ms (Views: 495.1ms | ActiveRecord: 41.5ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+
+
+Started GET "/areas" for 192.168.50.1 at 2015-02-25 09:05:11 +0000
+Processing by AreasController#index as HTML
+  [1m[35mArea Load (2.3ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	ORDER BY
+		"areas" . "name" ASC
+  Rendered areas/index.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 267ms (Views: 253.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/areas/4" for 192.168.50.1 at 2015-02-25 09:05:14 +0000
+Processing by AreasController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArea Load (0.8ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered areas/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 292ms (Views: 275.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/representatives" for 192.168.50.1 at 2015-02-25 09:05:16 +0000
+Processing by RepresentativesController#index as HTML
+  [1m[35mArea Load (2.1ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+  [1m[36mRepresentative Load (2.5ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	ORDER BY
+		"representatives" . "area_id" ASC
+		,"representatives" . "name" ASC[0m
+  [1m[35mArea Load (3.2ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "areas".* FROM "areas" WHERE "areas"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered representatives/index.html.erb within layouts/application (116.3ms)
+Completed 200 OK in 342ms (Views: 328.4ms | ActiveRecord: 7.7ms)
+user: root
+http://192.168.50.18:3000/representatives
+N+1 Query detected
+  Representative => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:54:in `block in _app_views_representatives_index_html_erb___1437489722916567858_93140580'
+  /vagrant/rcheck/rchecker/app/views/representatives/index.html.erb:52:in `_app_views_representatives_index_html_erb___1437489722916567858_93140580'
+
+
+
+Started GET "/representatives/1" for 192.168.50.1 at 2015-02-25 09:05:18 +0000
+Processing by RepresentativesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRepresentative Load (1.3ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 1]]
+  Rendered representatives/show.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 272ms (Views: 257.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/companies" for 192.168.50.1 at 2015-02-25 09:05:21 +0000
+Processing by CompaniesController#index as HTML
+  [1m[36mArea Load (9.1ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"[0m
+  [1m[35mRepresentative Load (4.4ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+  [1m[36mCompany Load (2.7ms)[0m  [1m
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	ORDER BY
+		"companies" . "area_id" ASC
+		,"companies" . "name" ASC[0m
+  [1m[35mArea Load (4.6ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mRepresentative Load (2.5ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mArea Load (3.9ms)[0m  
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mRepresentative Load (2.9ms)[0m  [1m
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered companies/index.html.erb within layouts/application (149.7ms)
+Completed 200 OK in 601ms (Views: 542.5ms | ActiveRecord: 30.3ms)
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:area]
+  Add to your finder: :includes => [:area]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:51:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+user: root
+http://192.168.50.18:3000/companies
+N+1 Query detected
+  Company => [:representative]
+  Add to your finder: :includes => [:representative]
+N+1 Query method call stack
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:53:in `block in _app_views_companies_index_html_erb___1809181646228164895_67953760'
+  /vagrant/rcheck/rchecker/app/views/companies/index.html.erb:49:in `_app_views_companies_index_html_erb___1809181646228164895_67953760'
+
+
+
+Started GET "/companies/1" for 192.168.50.1 at 2015-02-25 09:05:23 +0000
+Processing by CompaniesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCompany Load (1.7ms)[0m  
+	SELECT
+		"companies" . *
+	FROM
+		"companies"
+	WHERE
+		"companies" . "id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mArea Load (2.4ms)[0m  [1m
+	SELECT
+		"areas" . *
+	FROM
+		"areas"
+	WHERE
+		"areas" . "id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mRepresentative Load (3.5ms)[0m  
+	SELECT
+		"representatives" . *
+	FROM
+		"representatives"
+	WHERE
+		"representatives" . "id" = $1 LIMIT 1  [["id", 1]]
+  Rendered companies/show.html.erb within layouts/application (37.4ms)
+Completed 200 OK in 546ms (Views: 528.1ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/devices" for 192.168.50.1 at 2015-02-25 09:05:26 +0000
+Processing by DevicesController#index as HTML
+  [1m[36mDevice Load (2.5ms)[0m  [1m
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	ORDER BY
+		"devices" . "model_type" ASC
+		,"devices" . "uuid" ASC[0m
+  Rendered devices/index.html.erb within layouts/application (137.2ms)
+Completed 200 OK in 655ms (Views: 631.0ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/devices/5" for 192.168.50.1 at 2015-02-25 09:05:28 +0000
+Processing by DevicesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mDevice Load (3.0ms)[0m  
+	SELECT
+		"devices" . *
+	FROM
+		"devices"
+	WHERE
+		"devices" . "id" = $1 LIMIT 1  [["id", 5]]
+  Rendered devices/show.html.erb within layouts/application (67.9ms)
+Completed 200 OK in 642ms (Views: 624.3ms | ActiveRecord: 3.0ms)

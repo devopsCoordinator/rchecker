@@ -9,5 +9,13 @@ class RepresentativeDecorator < Draper::Decorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
+  
+  def created_at
+    object.created_at.strftime("%Y/%m/%d %H:%M:%S")
+  end
+
+  def updated_at
+    object.updated_at.strftime("%Y/%m/%d %H:%M:%S")
+  end
 
 end

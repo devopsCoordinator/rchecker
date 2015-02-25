@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223010100) do
+ActiveRecord::Schema.define(version: 20150225081018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,13 +104,13 @@ ActiveRecord::Schema.define(version: 20150223010100) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "uuid"
-    t.string   "model"
+    t.string   "model_type"
     t.text     "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "devices", ["model"], name: "index_devices_on_model", using: :btree
+  add_index "devices", ["model_type"], name: "index_devices_on_model_type", using: :btree
   add_index "devices", ["uuid"], name: "index_devices_on_uuid", unique: true, using: :btree
 
   create_table "locations", force: :cascade do |t|

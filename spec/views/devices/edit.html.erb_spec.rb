@@ -16,7 +16,7 @@ RSpec.describe "devices/edit", type: :view do
 
       assert_select "input#device_uuid[name=?]", "device[uuid]"
 
-      assert_select "input#device_model[name=?]", "device[model]"
+      assert_select "input#device.model_type[name=?]", "device.model_type]"
 
       assert_select "textarea#device_memo[name=?]", "device[memo]"
     end

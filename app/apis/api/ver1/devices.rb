@@ -5,7 +5,7 @@ module API
       helpers do
         # Strong Parametersの設定
         def device_params
-          ActionController::Parameters.new(params).permit(:uuid, :model, :memo )
+          ActionController::Parameters.new(params).permit(:uuid, :model_type, :memo )
         end
 
         # パラメータのチェック
@@ -13,7 +13,7 @@ module API
         # use :attributesという形で使うことができる。
         params :attributes do
           requires :uuid, type: String, desc: "Device uuid."
-          requires :model, type: String, desc: "Device model."
+          requires :model_type, type: String, desc: "Device model."
         end
 
         # パラメータのチェック
