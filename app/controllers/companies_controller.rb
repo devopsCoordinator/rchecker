@@ -11,8 +11,9 @@ class CompaniesController < InheritedResources::Base
     @companies = @q.result.order(area_id: :asc,name: :asc).decorate
   end
 
-  def hasdevices
-
+  def hasdevice
+    @company=Company.find(params[:id])
+    @devices=Device.eager_load(:locations,:companies).where(companies: {id: params[:id]})
   end
 
   private

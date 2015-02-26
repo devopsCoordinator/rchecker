@@ -1,7 +1,6 @@
 module API
   module Ver1
     class Supplies < Grape::API
-
       helpers do
         # Strong Parametersの設定
         def supply_params
@@ -33,17 +32,19 @@ module API
           supply = Supply.new(supply_params)
           supply.save
           status 201
+          end_time
         end
 
+        # PUT /api/v1/supply/{:uuid}
         desc 'Update end_time'
         params do
-          # optional :uuid, type: String, desc: "Device uuid."
+          requires :uuid, type: String, desc: "Device uuid."
           requires :end_date, type: Integer, desc: "Device End date format unixtime ex)1424505618"
         end
-        put ':id' do
+        put ':uuid' do
           params[:end_date]=Time.at(params[:end_date]) unless params[:end_date].to_s.empty?
-          supply = Supply.find(params[:id])
-          supply.update_attribute(:end_date, params[:end_date])
+          supply = Supply.where(uuid: params[:uuid]).first
+          supply.update({end_date: params[:end_date]})
           # supply.save
           status 201
         end
@@ -54,13 +55,13 @@ module API
           Supply.all
         end
 
-        # GET /api/v1/supply/{:id}
+        # GET /api/v1/supply/{:uuid}
         desc 'Return a supply.'
         params do
-          requires :id, type: Integer, desc: 'Supply id.'
+          requires :uuid, type: String, desc: 'Supply uuid.'
         end
-        get ':id' do
-          Supply.find(params[:id])
+        get ':uuid' do
+          Supply.where(uuid: params[:uuid])
         end
       end
     end

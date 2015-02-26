@@ -54,7 +54,7 @@
         <td><%= company.memo %></td>
         <td><%= company.created_at %></td>
         <td>
-          <%= link_to '照会', company ,{:class => "btn btn-default btn"}%> <%= link_to '編集', edit_company_path(company) ,{:class => "btn btn-primary btn"} %> <%= link_to '削除', company, :class => "btn btn-danger btn", method: :delete, data: { confirm: '一度削除すると、データは復元出来ませんがよろしいでしょうか?' } %>
+          <%= link_to '照会', company ,{:class => "btn btn-default btn"}%> <%= link_to '編集', edit_company_path(company) ,{:class => "btn btn-primary btn"} %> <%= link_to '削除', company, :class => "btn btn-danger btn", method: :delete, data: { confirm: '一度削除すると、データは復元出来ませんがよろしいでしょうか?' } %> <%= link_to 'デバイス',hasdevice_company_path(company),{:class => "btn btn-warning btn"} %>
         </td>
       </tr>
     <% end %>

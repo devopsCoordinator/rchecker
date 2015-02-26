@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
   resources :locations
 
-  resources :devices
+  resources :devices do
+    member do
+      get 'history'
+    end
+  end
 
   resources :areas
 
   resources :representatives
 
-  resources :companies
-  
+  resources :companies do
+    member do
+      get 'hasdevice'
+    end
+  end
+ # get 'companies/test'
+ # get 'hasdevices/:id', :controller => 'companies', :action => 'hasdevice'
   get 'welcome/index'
   root 'welcome#index'
 
