@@ -16,5 +16,4 @@ class Company < ActiveRecord::Base
   belongs_to :area,class_name: "Area", foreign_key: "area_id"
   has_many :locations,class_name: "Location", foreign_key: "company_id"
   has_many :devices, through: :locations
-
 end

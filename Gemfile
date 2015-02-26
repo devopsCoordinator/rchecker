@@ -51,6 +51,8 @@ gem 'cancancan'
 gem 'twitter-bootswatch-rails', '~> 3.1.1'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'less-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 
 # サーバー系
 gem 'unicorn'
@@ -62,6 +64,7 @@ group :development do
   gem 'spring-commands-rspec'            # bin/rspecコマンドを使えるようにし、rspecの起動を早めれる
   gem 'bullet'                           # n+1問題を発見
   gem 'rack-mini-profiler'               # ボトルネック計測
+  gem 'seed_dump'                        # seedファイルをDBから作れる
 
   # 保守性を上げる
   gem 'rubocop', require: false          # コーディング規約の自動チェック

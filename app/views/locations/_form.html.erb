@@ -1,0 +1,19 @@
+<%= simple_form_for @location, :html => { :class => 'form-horizontal' } do |f| %>
+    <fieldset>
+      <div class="form-group">
+        <%= f.label :company_id ,label: "会社名" %><br />
+        <%= f.collection_select :company_id, @companies, :id, :name, {include_blank: true}, {:class => 'form-control'} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :device_id ,label: "デバイス" %><br />
+        <%= f.collection_select :device_id, @devices, :id, :uuid, {include_blank: true}, {:class => 'form-control'} %>
+      </div>
+      <%= f.input :department, as: :string,label: "部署",placeholder: "部署" %>
+      <%= f.input :place ,as: :string,label: "場所",placeholder: "場所" %>
+      <div class="form-group">
+        <%= f.submit '登録', :class => 'btn btn-primary btn' %>
+        <%= link_to t('.cancel', :default => t("戻る")), locations_path, :class => 'btn btn-default btn' %>
+      </div>
+  </fieldset>
+<% end %>

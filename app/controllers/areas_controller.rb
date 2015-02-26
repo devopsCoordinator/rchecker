@@ -1,13 +1,13 @@
 class AreasController < InheritedResources::Base
 
   def index
-   	if params[:q].presence
-  	  @q = Area.search(search_params)
- 	else
- 	  @q = Area.search
+    if params[:q].presence
+      @q = Area.search(search_params)
+    else
+      @q = Area.search
     end
     @areas = @q.result.order(name: :asc,name: :asc).decorate
-   end
+  end
 
   private
 

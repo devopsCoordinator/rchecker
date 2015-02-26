@@ -1,17 +1,17 @@
 <%= simple_form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
     <fieldset>
-      <%= f.input :name ,label: "会社名"%>
+      <%= f.input :name ,as: :string,label: "会社名",placeholder: "会社名"%>
 
       <div class="form-group">
         <%= f.label :area_id ,label: "地域" %><br />
-        <%= f.collection_select :area_id, Area.all, :id, :name, {}, {:class => 'form-control'} %>
+        <%= f.collection_select :area_id, Area.all, :id, :name, {include_blank: true}, {:class => 'form-control'} %>
       </div>
 
       <div class="form-group">
         <%= f.label :representative_id ,label: "担当者" %><br />
-        <%= f.collection_select :representative_id, Representative.all, :id, :name, {}, {:class => 'form-control'} %>
+        <%= f.collection_select :representative_id, Representative.all, :id, :name, {include_blank: true}, {:class => 'form-control'} %>
       </div>
-      <%= f.input :memo ,label: "備考"  %>
+      <%= f.input :memo ,as: :string,label: "備考",placeholder: "備考" %>
       <div class="form-group">
         <%= f.submit '登録', :class => 'btn btn-primary btn' %>
         <%= link_to t('.cancel', :default => t("戻る")), companies_path, :class => 'btn btn-default btn' %>

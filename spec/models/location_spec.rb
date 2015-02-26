@@ -3,10 +3,10 @@
 # Table name: locations
 #
 #  id         :integer          not null, primary key
-#  comapny_id :integer
+#  company_id :integer
 #  device_id  :integer
 #  department :string
-#  location   :string
+#  place      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

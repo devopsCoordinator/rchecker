@@ -3,20 +3,20 @@
 # Table name: locations
 #
 #  id         :integer          not null, primary key
-#  comapny_id :integer
+#  company_id :integer
 #  device_id  :integer
 #  department :string
-#  location   :string
+#  place      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 FactoryGirl.define do
   factory :location do
-    comapny_id 1
+    company_id 1
 device_id 1
-department "MyString"
-location "MyString"
+department "MyText"
+place "MyText"
   end
 
 end

@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require yeti
+//= require moment
+//= require bootstrap-datetimepicker
+//= require moment/ja
