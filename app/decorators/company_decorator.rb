@@ -11,11 +11,11 @@ class CompanyDecorator < Draper::Decorator
   #   end
 
   def created_at
-    object.created_at.strftime("%Y/%m/%d %H:%M:%S")
+    object.created_at.strftime("%Y/%m/%d %H:%M")
   end
 
   def updated_at
-    object.updated_at.strftime("%Y/%m/%d %H:%M:%S")
+    object.updated_at.strftime("%Y/%m/%d %H:%M")
   end
 
 end

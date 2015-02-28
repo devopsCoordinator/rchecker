@@ -10,7 +10,7 @@ module API
         # パラメータのチェック
         params :attributes do
           requires :uuid, type: String, desc: "Device uuid."
-          requires :start_date, type: Integer, desc: "Device Start date format unixtime ex)1424505618"
+          optional :start_date, type: Integer, desc: "Device Start date format unixtime ex)1424505618"
           optional :end_date, type: Integer, desc: "Device Start date format unixtime ex)1424505618"
         end
 
@@ -27,24 +27,32 @@ module API
           use :attributes
         end
         post do
+          # あとで実装
+          # デバイス側から通信が出来なかった際にはローカルストレージにstart_timeを記録し
+          #　パラーメタにunixtimeでつめて送ったら、datetime変換して保存処理を入れる
           # unixtime2datetime
-          params[:start_date]=Time.at(params[:start_date]) unless params[:start_date].to_s.empty?
-          supply = Supply.new(supply_params)
-          supply.save
+          # params[:uuid]
+          # params[:start_date]=Time.at(params[:start_date]) unless params[:start_date].to_s.empty?
+          # @supply = Supply.new(supply_params)
+          @supply=Supply.new(uuid: params[:uuid],start_date: Time.new)
+          @supply.save
           status 201
-          end_time
         end
 
         # PUT /api/v1/supply/{:uuid}
         desc 'Update end_time'
         params do
-          requires :uuid, type: String, desc: "Device uuid."
-          requires :end_date, type: Integer, desc: "Device End date format unixtime ex)1424505618"
+          use :attributes
         end
         put ':uuid' do
-          params[:end_date]=Time.at(params[:end_date]) unless params[:end_date].to_s.empty?
-          supply = Supply.where(uuid: params[:uuid]).first
-          supply.update({end_date: params[:end_date]})
+          # あとで実装
+          # デバイス側から通信が出来なかった際にはローカルストレージにend_timeを記録し
+          #　パラーメタにunixtimeでつめて送ったら、datetime変換して保存処理を入れる
+
+          @supply = Supply.where(uuid: params[:uuid]).last
+          @end_date=Time.now
+          @elapsed_time=@end_date-@supply.start_date
+          @supply.update({end_date: @end_date,elapsed_time: @elapsed_time})
           # supply.save
           status 201
         end

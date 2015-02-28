@@ -3,6 +3,7 @@ ruby '2.1.3'
 
 # rails関連
 gem 'rails', '4.2.0'
+gem 'rails-i18n'
 gem 'turbolinks'
 gem 'grape'
 gem 'jbuilder', '~> 2.0'

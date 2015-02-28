@@ -5,8 +5,8 @@
 #  id         :integer          not null, primary key
 #  company_id :integer
 #  device_id  :integer
-#  department :string
-#  place      :string
+#  department :text
+#  place      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

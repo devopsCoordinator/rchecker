@@ -6,8 +6,12 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :device_id ,label: "デバイス" %><br />
-        <%= f.collection_select :device_id, @devices, :id, :uuid, {include_blank: true}, {:class => 'form-control'} %>
+
+        <%= f.input :device_id ,label: "デバイス" %><br />
+<!--         <%= f.collection_select :device_id, @devices, :id, :uuid, {include_blank: true}, {:class => 'form-control'} %>
+ -->
+<!--         <%= f.label :device_id ,label: "デバイス" %><br />
+        <%= f.collection_select :device_id, @devices, :id, :uuid, {include_blank: true}, {:class => 'form-control'} %> -->
       </div>
       <%= f.input :department, as: :string,label: "部署",placeholder: "部署" %>
       <%= f.input :place ,as: :string,label: "場所",placeholder: "場所" %>

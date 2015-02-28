@@ -2,23 +2,30 @@
     <h1>配給履歴</h1>
   </div>
 
-<h2><%= @company.name %>の「<%=@device.uuid%>」の配給履歴</h2>
+<h2><%= @company.name %>の「<%= @device.uuid %>」の配給履歴</h2>
+<p>ボトルが空になるまでの平均時間 「<%= Time.at(@elapsed_average).utc.strftime("%d日%k時間%M分") %>」</p>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
       <th>#</th>
       <th>開始日時</th>
       <th>終了日時</th>
+      <th>経過時間</th>
       <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @supply_historys.each do |supply_history| %>
+    <% @supplies.each do |supply| %>
       <tr>
-        <td><%= supply_history.id %></td>
-        <td><%= supply_history.start_date %></td>
-        <td><%= supply_history.end_date %></td>
+        <td><%= supply.id %></td>
+        <td><%= supply.start_date %></td>
+        <td><%= supply.end_date %></td>
+        <% if supply.elapsed_time ==nil %>
+        <td>-</td>
+        <% else %>
+        <td><%= Time.at(supply.elapsed_time).utc.strftime("%d日%k時間%M分") %></td>
+        <% end%>
       </tr>
     <% end %>
   </tbody>
