@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :supplies
+
   resources :locations
 
   resources :devices do
@@ -16,6 +18,9 @@ Rails.application.routes.draw do
       get 'hasdevice'
     end
   end
+
+  resources :supplies
+
  # get 'companies/test'
  # get 'hasdevices/:id', :controller => 'companies', :action => 'hasdevice'
   get 'welcome/index'

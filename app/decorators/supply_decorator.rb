@@ -1,16 +1,45 @@
 class SupplyDecorator < Draper::Decorator
   delegate_all
+  decorates :supply
+  decorates_association :devices
+  decorates_association :locations
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def start_date
+    object.start_date.strftime("%Y/%m/%d %H:%M:%S")
+  end
+
+  def end_date
+    object.start_date.strftime("%Y/%m/%d %H:%M:%S")
+  end
+
   def elapsed_time
-  	Time.at(object.elapsed_time).utc.strftime("%d日%k時間%M分")
+    object.elapsed_time.to_i
+  end
+
+  def elapsed_time_day
+    object.elapsed_time.divmod(24*60*60)[0].to_i
+  end
+
+  def elapsed_time_hour
+    object.elapsed_time.divmod(24*60*60)[1].divmod(60*60)[0].to_i
+  end
+
+  def elapsed_time_min
+    object.elapsed_time.divmod(24*60*60)[1].divmod(60*60)[1].divmod(60)[0].to_i
+  end
+
+  def elapsed_time_sec
+    object.elapsed_time.divmod(24*60*60)[1].divmod(60*60)[1].divmod(60)[1].to_i
+  end
+
+  def created_at
+    object.created_at.strftime("%Y/%m/%d %H:%M:%S")
+  end
+
+  def updated_at
+    object.updated_at.strftime("%Y/%m/%d %H:%M:%S")
   end
 
 end
+
+

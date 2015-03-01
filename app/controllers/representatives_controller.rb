@@ -1,14 +1,20 @@
 class RepresentativesController < InheritedResources::Base
 
   def index
-    @representatives=Representative.eager_load(:area)
+    @representatives = Representative.eager_load(:area)
     @areas = Area.all
     if params[:q].presence
       @q = @representatives.search(search_params)
     else
       @q = @representatives.search
     end
-    @representatives = @q.result.order(area_id: :asc,name: :asc).decorate
+    @representatives = @q.result.order(area_id: :asc,name: :asc)
+    @representatives = RepresentativeDecorator.decorate_collection(@representatives)
+
+  end
+
+  def show
+    @representative =  Representative.find(params[:id]).decorate
   end
 
   private

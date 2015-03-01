@@ -6,7 +6,12 @@ class AreasController < InheritedResources::Base
     else
       @q = Area.search
     end
-    @areas = @q.result.order(name: :asc,name: :asc).decorate
+    @areas = @q.result.order(name: :asc,name: :asc)
+    @areas = AreaDecorator.decorate_collection(@areas)
+  end
+
+  def show
+    @area = Area.find(params[:id]).decorate
   end
 
   private

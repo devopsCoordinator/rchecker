@@ -14,8 +14,9 @@
 FactoryGirl.define do
   factory :supply do
     uuid "MyString"
-start_date "2015-02-22 15:10:42"
-end_date "2015-02-22 15:10:42"
+start_date "2015-03-01 04:30:19"
+end_date "2015-03-01 04:30:19"
+elapsed_time 1.5
   end
 
 end

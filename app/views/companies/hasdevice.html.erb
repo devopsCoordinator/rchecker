@@ -22,7 +22,7 @@
         <td><%= device.memo %></td>
         <td><%= device.created_at %></td>
         <td>
-          <%= link_to '配給履歴',history_device_path(device),{:class => "btn btn-info btn"} %>
+          <%= link_to '配給履歴',supply_path(device.id),{:class => "btn btn-info btn"} %>
         </td>
       </tr>
     <% end %>

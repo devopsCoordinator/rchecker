@@ -41,13 +41,13 @@ module API
           Device.all
         end
 
-        # GET /api/v1/device/{:id}
+        # GET /api/v1/device/{:uuid}
         desc 'Return a device.'
         params do
-          requires :id, type: Integer, desc: 'device id.'
+          requires :uuid, type: Integer, desc: 'device uuid.'
         end
-        get ':id' do
-          Device.find(params[:id])
+        get ':uuid' do
+          Device.where(uuid: params[:uuid]).last
         end
 
       end

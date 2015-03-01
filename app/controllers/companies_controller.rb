@@ -5,16 +5,22 @@ class CompaniesController < InheritedResources::Base
     @representatives = Representative.all
     @companies=Company.eager_load(:area,:representative)
     if params[:q].presence
-      @q = @companies.search(search_params).per(10)
+      @q = @companies.search(search_params)
     else
       @q = @companies.search
     end
-    @companies = @q.result.order(area_id: :asc,name: :asc).decorate
+    @companies = @q.result.order(area_id: :asc,name: :asc)
+    @companies = CompanyDecorator.decorate_collection(@companies)
+  end
+
+  def show
+    @company =  Company.find(params[:id]).decorate
   end
 
   def hasdevice
-    @company=Company.find(params[:id])
-    @devices=Device.eager_load(:locations,:companies).where(companies: {id: params[:id]})
+    @company = Company.find(params[:id])
+    @devices = Device.eager_load(:locations,:companies).where(companies: {id: params[:id]})
+    @devices = DeviceDecorator.decorate_collection(@devices)
   end
 
   private

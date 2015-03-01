@@ -6,8 +6,14 @@ class DevicesController < InheritedResources::Base
     else
       @q = Device.search
     end
-    @devices = @q.result.order(model_type: :asc,uuid: :asc).decorate
+    @devices = @q.result.order(model_type: :asc,uuid: :asc)
+    @devices = DeviceDecorator.decorate_collection(@devices)
   end
+
+  def show
+    @device =  Device.find(params[:id]).decorate
+  end
+
 
   def history
     @company = Company.eager_load(:locations,:devices).where(devices: {id: params[:id]}).last
@@ -15,6 +21,9 @@ class DevicesController < InheritedResources::Base
     @supplies = Supply.eager_load(:device).where(uuid: @device.uuid)
     @elapsed_target = @supplies.where.not(end_date: nil)
     @elapsed_average = @elapsed_target.average(:elapsed_time).to_i
+    @elapsed_average_days = @elapsed_average.divmod(24*60*60)
+    @elapsed_average_hours = @elapsed_average_days[1].divmod(60*60)
+    @elapsed_average_mins =  @elapsed_average_hours[1].divmod(60)
   end
 
   private

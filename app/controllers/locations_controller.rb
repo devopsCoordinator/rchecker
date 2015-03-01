@@ -1,7 +1,7 @@
 class LocationsController < InheritedResources::Base
 
   def index
-    @locations=Location.eager_load(:company,:device)
+    @locations = Location.eager_load(:company,:device)
     @companies = Company.all
     @devices = Device.all
     if params[:q].presence
@@ -9,7 +9,8 @@ class LocationsController < InheritedResources::Base
     else
       @q = @locations.search
     end
-    @locations = @q.result.order(company_id: :asc,department: :asc).decorate
+    @locations = @q.result.order(company_id: :asc,department: :asc)
+    @locations = LocationDecorator.decorate_collection(@locations)
   end
 
   def new
@@ -22,6 +23,10 @@ class LocationsController < InheritedResources::Base
     @location = Location.find(params[:id])
     @companies = Company.all
     @devices = Device.all
+  end
+
+  def show
+    @location =  Location.find(params[:id]).decorate
   end
 
   private

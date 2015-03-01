@@ -12,5 +12,5 @@
 #
 
 class Supply < ActiveRecord::Base
-  belongs_to :device,class_name: "Device",primary_key: :uuid, foreign_key: :uuid
+	belongs_to :device,class_name: "Device",primary_key: :uuid, foreign_key: :uuid
 end

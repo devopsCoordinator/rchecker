@@ -12,6 +12,6 @@
 #
 
 class Representative < ActiveRecord::Base
-	belongs_to :company, class_name: "Company", foreign_key: :representative_id
-	belongs_to :area, class_name: "Area", foreign_key: :area_id
+  belongs_to :company, class_name: "Company", foreign_key: :representative_id
+  belongs_to :area, class_name: "Area", foreign_key: :area_id
 end

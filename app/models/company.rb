@@ -14,6 +14,6 @@
 class Company < ActiveRecord::Base
   belongs_to :representative, class_name: "Representative", foreign_key: "representative_id"
   belongs_to :area,class_name: "Area", foreign_key: "area_id"
-  has_many :locations,class_name: "Location", foreign_key: "company_id"
+  has_many :locations,class_name: "Location", foreign_key: "company_id",dependent: :destroy
   has_many :devices, through: :locations
 end
