@@ -9,27 +9,39 @@ class SupplyDecorator < Draper::Decorator
   end
 
   def end_date
-    object.start_date.strftime("%Y/%m/%d %H:%M:%S")
+    if object.end_date.present?
+      object.end_date.strftime("%Y/%m/%d %H:%M:%S")
+    end
   end
 
   def elapsed_time
-    object.elapsed_time.to_i
+    if object.elapsed_time.present?
+      object.elapsed_time.to_i
+    end
   end
 
   def elapsed_time_day
-    object.elapsed_time.divmod(24*60*60)[0].to_i
+    if object.elapsed_time.present?
+      object.elapsed_time.divmod(24*60*60)[0].to_i
+    end
   end
 
   def elapsed_time_hour
-    object.elapsed_time.divmod(24*60*60)[1].divmod(60*60)[0].to_i
+    if object.elapsed_time.present?
+      object.elapsed_time.divmod(24*60*60)[1].divmod(60*60)[0].to_i
+    end
   end
 
   def elapsed_time_min
-    object.elapsed_time.divmod(24*60*60)[1].divmod(60*60)[1].divmod(60)[0].to_i
+    if object.elapsed_time.present?
+      object.elapsed_time.divmod(24*60*60)[1].divmod(60*60)[1].divmod(60)[0].to_i
+    end
   end
 
   def elapsed_time_sec
-    object.elapsed_time.divmod(24*60*60)[1].divmod(60*60)[1].divmod(60)[1].to_i
+    if object.elapsed_time.present?
+      object.elapsed_time.divmod(24*60*60 )[1].divmod(60*60)[1].divmod(60)[1].to_i
+    end
   end
 
   def created_at
@@ -41,5 +53,3 @@ class SupplyDecorator < Draper::Decorator
   end
 
 end
-
-

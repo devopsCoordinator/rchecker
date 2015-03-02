@@ -6,6 +6,7 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
+      <th>#</th>
       <th>製造コード</th>
       <th>モデル</th>
       <th>備考</th>
@@ -17,12 +18,13 @@
   <tbody>
     <% @devices.each do |device| %>
       <tr>
+        <td><%= device.id %></td>
         <td><%= device.uuid %></td>
         <td><%= device.model_type %></td>
         <td><%= device.memo %></td>
         <td><%= device.created_at %></td>
         <td>
-          <%= link_to '配給履歴',supply_path(device.id),{:class => "btn btn-info btn"} %>
+          <% if hassupply?(device.uuid) %> <%= link_to '配給履歴',supply_path(device.id),{:class => "btn btn-info btn"} %><% else %><%= link_to '配給履歴',supply_path(device.id),{:class => "btn btn-info btn disabled"} %><% end %>
         </td>
       </tr>
     <% end %>

@@ -1374,3 +1374,45 @@ N+1 Query detected
 N+1 Query method call stack
   /vagrant/rcheck/rchecker/app/views/locations/index.html.erb:57:in `block in _app_views_locations_index_html_erb__144405668228085778_70327687082700'
   /vagrant/rcheck/rchecker/app/views/locations/index.html.erb:54:in `_app_views_locations_index_html_erb__144405668228085778_70327687082700'
+2015-03-02 01:35:32[WARN] user: root
+http://192.168.50.18:3000/locations/new
+Unused Eager Loading detected
+  Device => [:locations, :companies]
+  Remove from your finder: :includes => [:locations, :companies]
+
+2015-03-02 01:36:12[WARN] user: root
+http://192.168.50.18:3000/locations/new
+Unused Eager Loading detected
+  Device => [:locations, :companies]
+  Remove from your finder: :includes => [:locations, :companies]
+
+2015-03-02 01:36:27[WARN] user: root
+http://192.168.50.18:3000/locations/new
+Unused Eager Loading detected
+  Device => [:locations, :companies]
+  Remove from your finder: :includes => [:locations, :companies]
+
+2015-03-02 01:36:32[WARN] user: root
+http://192.168.50.18:3000/locations/new
+Unused Eager Loading detected
+  Device => [:locations, :companies]
+  Remove from your finder: :includes => [:locations, :companies]
+
+2015-03-02 01:36:59[WARN] user: root
+http://192.168.50.18:3000/locations/new
+Unused Eager Loading detected
+  Device => [:locations, :companies]
+  Remove from your finder: :includes => [:locations, :companies]
+
+2015-03-02 01:37:40[WARN] user: root
+http://192.168.50.18:3000/locations/new
+Unused Eager Loading detected
+  Device => [:locations, :companies]
+  Remove from your finder: :includes => [:locations, :companies]
+
+2015-03-02 09:32:14[WARN] user: root
+http://192.168.50.18:3000/supplies/16
+Unused Eager Loading detected
+  Supply => [:device]
+  Remove from your finder: :includes => [:device]
+

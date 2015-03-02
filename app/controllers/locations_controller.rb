@@ -14,9 +14,10 @@ class LocationsController < InheritedResources::Base
   end
 
   def new
+    @locations = Location.all
     @location = Location.new
     @companies = Company.all
-    @devices = Device.all
+    @devices = Device.where.not(id: @locations.map(&:device_id))
   end
 
   def edit

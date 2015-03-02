@@ -1,4 +1,5 @@
 class CompaniesController < InheritedResources::Base
+helper_method :hasdevice?,:hassupply?
 
   def index
     @areas = Area.all
@@ -11,6 +12,9 @@ class CompaniesController < InheritedResources::Base
     end
     @companies = @q.result.order(area_id: :asc,name: :asc)
     @companies = CompanyDecorator.decorate_collection(@companies)
+
+    @device
+
   end
 
   def show
@@ -24,6 +28,14 @@ class CompaniesController < InheritedResources::Base
   end
 
   private
+
+  def hasdevice?(company_id)
+    Location.where(company_id: company_id).present?
+  end
+
+  def hassupply?(uuid)
+    Supply.where(uuid: uuid).present?
+  end
 
   def company_params
     params.require(:company).permit(:name, :area_id, :representative_id, :memo)

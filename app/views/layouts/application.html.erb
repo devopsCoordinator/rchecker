@@ -33,27 +33,40 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">ダッシュボード</a></li>
+            <li><a href="/companies">会社</a></li>
+            <li><a href="/locations">設置場所</a></li>
+            <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">その他マスタ <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
             <li><a href="/areas">地域</a></li>
             <li><a href="/representatives">担当者</a></li>
-            <li><a href="/companies">会社</a></li>
             <li><a href="/devices">デバイス</a></li>
-            <li><a href="/locations">設置場所</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
-    <div class="container theme-showcase">
-      <% flash.each do |name, msg| %>
-        <div class="alert alert-<%= name == "notice" ? "success" : "error" %>">
-          <a class="close" data-dismiss="alert">×</a> <!-- アラートダイアログに×ボタンをつける -->
+    <div id="wrap">
+      <div class="container theme-showcase">
+        <% flash.each do |name, msg| %>
+          <div class="alert alert-<%= name == "notice" ? "success" : "error" %>">
+            <a class="close" data-dismiss="alert">×</a> <!-- アラートダイアログに×ボタンをつける -->
             <%= msg %>
-       </div>
-      <% end %>
+         </div>
+        <% end %>
 
-      <%= yield %>
+        <%= yield %>
 
-    </div> <!-- /container -->
+      </div> <!-- /container -->
+   </div> <!-- /wrap -->
+   <br >
+<!--     <footer>
+      <div class="container">
+        <div class="col-lg-12">
+          © 2015 Temona Inc. 
+        </div>
+      </div>
+    </footer> -->
+
 
     <!-- Javascripts
     ================================================== -->

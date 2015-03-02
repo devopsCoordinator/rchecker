@@ -11,7 +11,7 @@
 #
 
 class Device < ActiveRecord::Base
-  has_many :supplies, class_name: "Supply",dependent: :destroy
-  has_many :locations
-  has_many :companies, through: :locations
+  has_many :supplies, class_name: "Supply",foreign_key: :uuid,dependent: :destroy
+  has_many :locations, class_name: "Location",dependent: :destroy
+  has_many :companies, class_name: "Company",through: :locations
 end

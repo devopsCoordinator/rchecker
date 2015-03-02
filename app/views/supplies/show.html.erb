@@ -20,10 +20,10 @@
         <td><%= supply.id %></td>
         <td><%= supply.start_date %></td>
         <td><%= supply.end_date %></td>
-        <% if supply.elapsed_time ==nil %>
-        <td>-</td>
-        <% else %>
+        <% if supply.elapsed_time.present? %>
         <td><%= supply.elapsed_time_day %> 日 <%= supply.elapsed_time_hour %> 時間 <%= supply.elapsed_time_min %> 分 <%= supply.elapsed_time_sec %> 秒</td>
+        <% else %>
+                <td>-</td>
         <% end%>
       </tr>
     <% end %>

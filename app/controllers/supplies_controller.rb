@@ -6,6 +6,7 @@ class SuppliesController < InheritedResources::Base
     @supplies = Supply.eager_load(:device).where(uuid: @device.uuid)
     @elapsed_target = @supplies.where.not(end_date: nil)
     @supplies = SupplyDecorator.decorate_collection(@supplies)
+    # binding.pry
     @elapsed_average = @elapsed_target.average(:elapsed_time).to_i
     @elapsed_average_days = @elapsed_average.divmod(24*60*60)
     @elapsed_average_day = @elapsed_average_days[0].to_i
