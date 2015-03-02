@@ -141,6 +141,8 @@ GEM
       rack-accept
       rack-mount
       virtus (>= 1.0.0)
+    grape-rails-routes (1.0)
+      rails (>= 4.1.4)
     guard (2.12.2)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -431,6 +433,7 @@ DEPENDENCIES
   faker
   faker-japanese
   grape
+  grape-rails-routes
   guard-livereload
   has_scope
   hirb
